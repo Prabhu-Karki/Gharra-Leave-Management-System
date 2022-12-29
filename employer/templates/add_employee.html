@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+                     {% block title %} Employee Management System {% endblock %}
+            {% block content %}
+            
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Add Employee</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'employer/dashboard' %}" class="text-success">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- // Basic multiple Column Form section start -->
+    <section id="multiple-column-form">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form" method='post' action='/add_employee/' validate>
+                                {% csrf_token %}
+                                <div class="row">
+
+                                    <div class="col-md-6 col-12">
+                                       
+                                        <div class="form-group">   
+                                            <label for="company-column">User</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" name="emp_user" required>
+                                                    {% for user in users %}
+                                                        <option value='{{user.username}}'>{{user.full_name}}</option>
+                                                    {% endfor %}
+                                                    
+                                                    </select>
+                                                </fieldset>
+                                                {% if users %}
+                                                {% else %}
+                                                <p><font color='red'> Create Useraccount for employee first.</font></p>
+                                                {% endif %}
+                                        </div> 
+                                    </div>
+                                    
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">ID Number</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="id number" name='emp_id' required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-hash"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Gender</label>
+                                            <div class="position-relative">
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" name="gender" required>
+                                                        <option value='Male'>Male</option>
+                                                        <option value='Female'>Female</option>
+                                                        <option value='Other'>Other</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">First Name</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="first name" name="fname" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Middle Name</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="middle name" name="mname">
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Last Name</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="last name" name="lname" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Age</label>
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control" placeholder="age" name='age' required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="col-md-3 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Email</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="email" name="email" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <div class="col-md-3 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Contact</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="contact number" name='phone' requried>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <div class="col-md-3 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Profile</label>
+                                            <div class="position-relative">
+                                                <input type="file" class="form-control" placeholder="" name='profile'>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="country-floating">Department</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" name="department">
+                                                        <option value='IT'>IT</option>
+                                                        <option value='Engineering'>ENGINEERING</option>
+                                                        <option value='HR'>HR</option>
+                                                        <option value='Finance'>FINANCE</option>
+                                                    </select>
+                                                </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="company-column">Designation</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" name="designation" required>
+                                                        <option value='IT'>IT</option>
+                                                        <option value='Manager'>MANAGER</option>
+                                                        <option value='Supervisor'>SUPERVISOR</option>
+                                                        <option value='Engineer'>ENGINEER</option>
+                                                    </select>
+                                                </fieldset>
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Username</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="username" name="username" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Password</label>
+                                            <div class="position-relative">
+                                                <input type="password" class="form-control" placeholder="passsword" name="password" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-key"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% if users %}
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <a href="{% url 'add_user' %}" class="btn btn-primary me-1 mb-1">Add User</a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // Basic multiple Column Form section end -->
+</div>
+
+        </div>
+    </div>
+    
+{% endblock %}

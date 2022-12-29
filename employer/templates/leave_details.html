@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+                     {% block title %} Employee Management System {% endblock %}
+            {% block content %}
+            <div class="main-content container-fluid">
+               <div class="page-title">
+                  <h3>Leave Details</h3>
+               </div>
+               <section id="basic-vertical-layouts">
+    <div class="row match-height">
+        <div class="col-md-12 col-12">
+        <div class="card">
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-vertical" action = '' method='post'>
+                    {% csrf_token %}
+                <div class="form-body">
+                    <div class="row">
+                    <div class="col-12">
+                        <table class='table' id="table1">
+                               
+                                <tbody>
+                                    {% for leave in leaves %}
+                                    <tr>
+                                        <td><b>Full Name:</b>       {{leave.employee.first_name}}&nbsp;{{leave.employee.last_name}}</td>
+                                        <td><b>Age:</b>             {{leave.employee.age}}</td>
+                                        <td><b>Gender:</b>          {{leave.employee.gender}}</td>
+                                    </tr>
+                                    <tr> 
+                                        <td><b>Leave Type:</b>      {{leave.leave_type}}</td>
+                                        <td><b>Leave Date:</b>      {{leave.leave_from}} to {{leave.leave_to}}</td>
+                                        <td><b>Posting Date:</b>    {{leave.posting_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Leave Status:</b>    {{leave.status}}</td>
+                                        <td></td><td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Admin Remark:</b>    Leave is {{ leave.status}}</td>
+                                        <td></td><td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-end">
+                        {% if leave.status == 'Approved' %}
+                        <button type="submit" class="btn btn-primary me-1 mb-1"  name = 'value' value='Rejected'>Reject</button>
+                        {% elif leave.status == 'Rejected' %}
+                        <button type="submit" class="btn btn-primary me-1 mb-1" name='value' value='Approved'>Approve</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-primary me-1 mb-1" name='value' value='Approved'>Approve</button>
+                        <button type="submit" class="btn btn-primary me-1 mb-1"  name = 'value' value='Rejected'>Reject</button>
+                        {% endif %} 
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+    <!-- // Basic Vertical form layout section end -->
+            </div>
+         </div>
+      </div>
+{% endblock %}

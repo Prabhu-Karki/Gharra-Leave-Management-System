@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+                     {% block title %} Employee Management System {% endblock %}
+            {% block content %}
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Add User</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'employer/dashboard' %}" class="text-success">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- // Basic multiple Column Form section start -->
+    <section id="multiple-column-form">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form" method='post' action='/add_user/' validate>
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Full Name</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="full name" name='full_name' required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Contact</label>
+                                            <div class="position-relative">
+                                                <input type="number" class="form-control" placeholder="contact" name="phone" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-6 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Email</label>
+                                            <div class="position-relative">
+                                                <input type="email" class="form-control" placeholder="email" name="email" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Profile</label>
+                                            <div class="position-relative">
+                                                <input type="file" class="form-control" placeholder="" name='profile'>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Username</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" placeholder="username" name="username" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">Password</label>
+                                            <div class="position-relative">
+                                                <input type="password" class="form-control" placeholder="password" name="password" required>
+                                                <div class="form-control-icon">
+                                                    <i class="fa fa-key"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="first-name-icon">User Category</label>
+                                            <div class="position-relative">
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" name="category" required>
+                                                        <option value='Admin'>Admin</option>
+                                                        <option value='Staff'>Staff</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // Basic multiple Column Form section end -->
+</div>
+
+        </div>
+    </div>
+{% endblock %}

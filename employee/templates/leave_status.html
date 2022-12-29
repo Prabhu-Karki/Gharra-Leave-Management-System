@@ -1,0 +1,68 @@
+{% extends 'emp_base.html' %}
+{% block title %} Leave Status{% endblock title %}
+{% block content %}
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Manage Leave Status</h3>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'employee/dashboard' %}" class="text-success">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Leave Status</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class='table' id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>Leave Type</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Posting Date</th>
+                                        <th>Remark</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for leave_status in leave_status %}
+                                    <tr>
+                                        <td>{{leave_status.leave_type}}</td>
+                                        <td>{{leave_status.leave_from}}</td>
+                                        <td>{{leave_status.leave_to}}</td>
+                                        <td>{{leave_status.posting_date}}</td>
+                                        <td>waiting for approval</td>
+                                        {% if leave_status.status == "Approved"%}
+                                        <td>
+                                            <td>Approved</td>
+                                            <span class="badge bg-success">{{leave_status.status}}</span>
+                                        </td>
+                                        {% elif leave_status.status == "Rejected" %}
+                                        <td>
+                                            <td>Rejected</td>
+                                            <span class="badge bg-danger">{{leave_status.status}}</span>
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                            <td>Waiting for approval</td>
+                                            <span class="badge bg-info">{{leave_status.status}}</span>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
