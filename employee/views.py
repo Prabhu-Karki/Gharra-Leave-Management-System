@@ -21,9 +21,9 @@ class EmployeeDashboard(View):
         context= {
             'employee': EmployeeModel.objects.filter(user=self.request.user),
             'dash_status': 'active',
-            'approved' : len(ApplyLeave.objects.filter(status='Approve')),
-            'pending' : len(ApplyLeave.objects.filter(status='Pending')),
-            'rejected': len(ApplyLeave.objects.filter(status='Rejected')),
+            'approved' : len(user= self.request.user, ApplyLeave.objects.filter(status='Approve')),
+            'pending' : len(user = self.request.user., ApplyLeave.objects.filter(status='Pending')),
+            'rejected': len(user = self.request.user, ApplyLeave.objects.filter(status='Rejected')),
             'total_leave': total_leave,
         }
         return render(request, 'employee.html', context)
