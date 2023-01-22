@@ -10,7 +10,7 @@ Gharra- Leave Management System is a Employee leave manaement sytem where employ
 <b>Requirements:</b>
 
 
-Django >= Django==4.0.6<br>
+Django==4.0.6<br>
 Python >= 3.10.5<br><br>
 Installation and Set-up<br>
 Clone this repository git clone https://github.com/Prabhu-Karki/Gharra<br>
